@@ -1,7 +1,14 @@
+<!--
+ * @Author: rsl
+ * @Date: 2019-07-14
+ * @LastEditors: rsl
+ * @LastEditTime: 2019-07-15
+ * @Description: 首页轮播图
+ -->
 <template>
   <div class="wrapper">
-    <swiper :options="swiperOption">
-      <swiper-slide v-for="(item, index) of list" :key="index">
+    <swiper :options="swiperOption" v-if="showSwiper">
+      <swiper-slide v-for="item in list" :key="item.id">
         <img class="swiper-img" :src="item.imgUrl" />
       </swiper-slide>
       <div class="swiper-pagination"  slot="pagination"></div>
@@ -12,19 +19,20 @@
 <script>
 export default {
   name: 'HomeSwiper',
+  props: {
+    list: Array
+  },
   data () {
     return {
       swiperOption: {
         pagination: '.swiper-pagination',
         loop: true
-      },
-      list: [
-        {
-          imgUrl: 'https://source.qunarzz.com/site/images/wns/20190705_qunar_dujia_homepage_top_banner_1.jpg'
-        }, {
-          imgUrl: 'https://source.qunarzz.com/site/images/wns/2019704_dujia_homepage_top_banner_6.jpg'
-        }
-      ]
+      }
+    }
+  },
+  computed: {
+    showSwiper () {
+      return this.list.length
     }
   }
 }

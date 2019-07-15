@@ -1,3 +1,10 @@
+<!--
+ * @Author: rsl
+ * @Date: 2019-07-14
+ * @LastEditors: rsl
+ * @LastEditTime: 2019-07-15
+ * @Description: 首页头部组件
+ -->
 <template>
   <div class="header">
     <div class="header-left">
