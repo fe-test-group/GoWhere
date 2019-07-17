@@ -1,15 +1,24 @@
 <template>
   <div>
     <city-header></city-header>
+    <city-search :cities="cities"></city-search>
+    <city-list></city-list>
+    <city-alphabet></city-alphabet>
   </div>
 </template>
 <script>
 import CityHeader from './components/Header'
+import CitySearch from './components/Search'
+import CityList from './components/List'
+import CityAlphabet from './components/Alphabet'
 import axios from 'axios'
 export default {
   name: 'City',
   components: {
-    CityHeader
+    CityHeader,
+    CitySearch,
+    CityList,
+    CityAlphabet
   },
   data () {
     return {
@@ -20,10 +29,10 @@ export default {
   methods: {
     getCityInfo () {
       axios.get('http://localhost:8080/static/mock/city.json')
-        .then(this.getCityInfoSucc)
+        .then(this.handleGetCityInfoSucc)
     },
-    getCityInfoSucc (res) {
-      res = res.date
+    handleGetCityInfoSucc (res) {
+      res = res.data
       if (res.ret && res.data) {
         const data = res.data
         this.hotCities = data.hotCities
