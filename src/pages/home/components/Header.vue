@@ -2,7 +2,7 @@
  * @Author: rsl
  * @Date: 2019-07-14
  * @LastEditors: rsl
- * @LastEditTime: 2019-07-17
+ * @LastEditTime: 2019-07-24
  * @Description: 首页头部组件
  -->
 <template>
@@ -16,7 +16,7 @@
     </div>
     <router-link to="/city">
       <div class="header-right">
-        城市
+        {{this.$store.state.city}}
         <span class="iconfont arrow-icon">&#xe64a;</span>
       </div>
     </router-link>
